@@ -1,6 +1,6 @@
 ---
 title: "Modelo Basado en Agentes"
-author: "Domingo Martínez, Cruz Carmen, Gómez Almanza Johan Alexander,  "
+author: "Domingo Martínez, Cruz Carmen, Gómez Almanza Johan Alexander, Pedroza Franco Jimena "
 toc: true # Activar tabla de contenido
 toc-depth: 3 # Profundidad de la tabla de contenido
 toc-expand: true # Mostrar tabla al inicio
@@ -61,7 +61,132 @@ Exposed <- data.frame(Day = 1:nTime1) # Un  data frame para contar expuestos
 ## Gráfico Dinámico COVID-19
 
 ```{r Dynamic Graph}
+# Declaramos un ciclo 
 
+for (m in 1:20) {
+  #####################################################################
+  usan_cubrebocas <- data.frame(AgentNo = 1,
+                                    State = "S", 
+                                    ObeySocialNorm = 1,
+                                    Risk_seeking = rpois(1,2),
+                                    stringsAsFactors = F,
+                                    Social_profile = "Usa_cubrebocas")
+    
+  no_usan_cubrebocas <- data.frame(AgentNo = 1,
+                                    State = "E",
+                                    ObeySocialNorm = 0,
+                                    Risk_seeking = rpois(1,2),
+                                    stringsAsFactors = F,
+                                    Social_profile = "No_usa_cubrebocas")
+  #####################################################################
+  # Now, lets create a population for each kind of agent
+  
+  # define size of each population
+  Usa_population = 10 # Definimos población que sí usa cubrebocas
+  No_usa_population = 1 # Definimos población que NO usa cubrebocas
+  length.population = Usa_population + No_usa_population
+  # create population Usa cubrebocas
+    for (i in 2:Usa_population) {
+      usa_cubrebocas <- data.frame(AgentNo = 1,
+                                    State = "S", 
+                                    ObeySocialNorm = 1,
+                                    Risk_seeking = rpois(1,2),
+                                    stringsAsFactors = F,
+                                    Social_profile = "Usa_cubrebocas")
+     
+      usan_cubrebocas <- rbind(usa_cubrebocas,usan_cubrebocas)
+    }
+    
+    # create population NO usa cubrebocas
+    
+    for (i in 2:No_usa_population) {
+      no_usa_cubrebocas <- data.frame(AgentNo = 1,
+                                    State = "E",
+                                    ObeySocialNorm = 0,
+                                    Risk_seeking = rpois(1,2),
+                                    stringsAsFactors = F,
+                                    Social_profile = "No_usa_cubrebocas")
+      
+      no_usan_cubrebocas <- rbind(no_usan_cubrebocas, no_usa_cubrebocas)
+    }
+  #################################################################
+  # Now we joint three data sets in only one.
+  population <- rbind(usan_cubrebocas, no_usa_cubrebocas)
+  population <- population[,-1] # Eliminamos la última columna
+  glimpse(population) # Revisamos la estructura de la población
+  #################################################################
+    nTime1 <- 20 # Set how far the model will run.
+    # Now we will create a data frame filled with zeros.
+    Out1 <- data.frame(Day = 1:nTime1,
+                       S = rep(0, nTime1),
+                       E = rep(0, nTime1),
+                       I = rep(0, nTime1)
+                       )
+    # Move the people through time.
+    for (k in 1:nTime1) {
+      # A cycle for moving people through time.
+      for (i in 1:length.population) {
+        # Here we determine the Risk seeking behavior, i.e. socialize. 
+        # In other words, if they like to meet others during the lock down.
+        # Number [i] indicates no wearing mask agent number i.
+        # Now, we depict how many persons will meet person [i]
+        Meet1 <- population$Risk_seeking[ i ] # 
+        Meet1 
+        # Now, let's grab the agents they will meet
+        Meet2 <- sample(1:length.population, Meet1, replace = T)
+        # Add the subject i to the group
+        Meet2 <- c(Meet2,i)
+        Meet2
+        # Check if someone in the group has been exposed.
+        exposed.table <- table(population[Meet2,1] == "E")
+        true_values <- exposed.table["TRUE"]
+        true_values[is.na(true_values)] <- 0
+        true_values <- as.numeric(true_values)
+        # If someone got exposed, then, only "S" people in group change status to "E"
+        if (true_values > 0) {
+          # Grab only agents who are susceptible from Meet2
+          a <- population[Meet2,1]
+          a <-(a == "S")
+          b <- data.frame(A = Meet2,
+                          B = a)
+          b
+          Meet2.1 <- subset(b,B == TRUE, select = A)
+          Meet2.1
+          population$State[Meet2.1$A] <- "E"
+          
+         # Check if all people into the group obey social norm 
+          obey.table <- table(population[Meet2,2] == 0)
+          true_values2 <- obey.table["TRUE"]
+          true_values2[is.na(true_values2)] <- 0
+          true_values2 <- as.numeric(true_values2)
+          # If, at least, one person don't obey the social norm, then the exposed people can get infected, under certain probability. 
+          
+            if (true_values2 > 0) {
+            # Grab people into Meet2
+              for (j in Meet2) {
+              # Let's assign a probability to get infected to each subject into Meet2.
+                prob.to.get.infected <- runif(1,0,1)
+                if (prob.to.get.infected > 0.7) {
+                  population$State[j] <- "I"
+                }
+              }
+            }
+         }
+      }
+      # Now we record the results progressively.
+      Out1$S[k]<-length(population$State[population$State == "S"])
+      Out1$E[k]<-length(population$State[population$State == "E"])
+      Out1$I[k]<-length(population$State[population$State == "I"])
+      
+    }
+    
+    Out1
+  #################################################################
+  Infected<-cbind(Infected,Out1$I)
+  Susceptible<-cbind(Susceptible,Out1$S)
+  Exposed<-cbind(Exposed,Out1$E)
+  #################################################################
+}
 ```
 
 ## Gráfico Estático COVID-19
