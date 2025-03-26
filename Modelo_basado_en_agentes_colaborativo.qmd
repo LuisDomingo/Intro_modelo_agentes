@@ -1,6 +1,6 @@
 ---
 title: "Modelo Basado en Agentes"
-author: "Domingo Martínez, "
+author: "Domingo Martínez, Cruz Carmen,  "
 toc: true # Activar tabla de contenido
 toc-depth: 3 # Profundidad de la tabla de contenido
 toc-expand: true # Mostrar tabla al inicio
@@ -27,7 +27,9 @@ format:
 
 ```{r setup, include=T}
 # Lista de paquetes necesarios
-required_packages <- c()
+required_packages <- c("tidyverse",
+                       "NetLogoR",
+                       "SpaDES.core")
 
 # Función para instalar y cargar paquetes automáticamente
 load_or_install <- function(packages) {
