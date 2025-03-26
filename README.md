@@ -20,3 +20,4 @@ Un modelo basado en agentes, **es una tećnica computacional que permite simular
 
 "... los agentes individuales actúan según lo que perciben como sus intereses propios, como la reproducción, el beneficio económico o el estatus social... Utilizan una racionalidad limitada y heurísticas o reglas simples de toma de decisiones... pueden experimentar aprendizaje, adaptación y reproducción".
 
+**Siempre hacer un clon del último archivo**. 
