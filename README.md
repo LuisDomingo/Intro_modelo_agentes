@@ -2,11 +2,11 @@
 Introducción a la simulación basada en agentes, con programación base en R.
 Referencias: <https://es.wikipedia.org/wiki/Modelo_basado_en_agente>
 
-## Definiciones
+## Definiciones 
 
 Un modelo basado en agentes, **es una tećnica computacional que permite simular**, mediante métodos estocásticos, *las acciones e interacciones de agentes autónomos* dentro de un entorno, para estudiar y entender sus efectos conjuntos.
 
-**Agente**: individuo o ente que tiene agencia, es decir, la capacidad de actuar. Los agentes modelados pueden representar:
+**Agente**: individuo o ente que tiene agencia, es decir, la capacidad de actuar. Los agentes modelados pueden representar lo siguiente:
 - Animales.
 - Células.
 - Empresas.
