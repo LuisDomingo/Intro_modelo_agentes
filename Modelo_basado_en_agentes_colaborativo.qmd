@@ -1,0 +1,76 @@
+---
+title: "Modelo Basado en Agentes"
+author: "Domingo Martínez, "
+toc: true # Activar tabla de contenido
+toc-depth: 3 # Profundidad de la tabla de contenido
+toc-expand: true # Mostrar tabla al inicio
+toc-location: left-body # Ubicación de la tabla de contenido
+number-sections: true # Numerar los encabezados en el render
+number-depth: 3 # Profundidad de encabezados que se numerarán
+toc-title: Contenido # Personalizar el título de la tabla de contenidos
+theme: flatly # Tema
+fontsize: 100% # Tamaño de la letra
+# fontcolor: grey # Definir color
+highlight-style: pygments
+format:
+  html:
+    code-fold: true
+    html-math-method: katex
+    self-contained: true
+  pdf:
+    geometry:
+      - top=30mm
+      - left=30mm
+  docx: default
+---
+
+
+```{r setup, include=T}
+# Lista de paquetes necesarios
+required_packages <- c()
+
+# Función para instalar y cargar paquetes automáticamente
+load_or_install <- function(packages) {
+  for (pkg in packages) {
+    if (!require(pkg, character.only = TRUE)) {
+      install.packages(pkg, dependencies = TRUE)
+      library(pkg, character.only = TRUE)
+    }
+  }
+}
+
+# Llamada a la función con los paquetes necesarios
+load_or_install(required_packages)
+```
+
+## Ejemplo COVID-19
+
+```{r Escenario usan v.s. no usan cubrebocas, include=T}
+
+```
+
+## Gráfico Dinámico COVID-19
+
+```{r Dynamic Graph}
+
+```
+
+## Gráfico Estático COVID-19
+
+```{r}
+
+```
+
+
+## Ejemplo depredador-presa con NetLogoR
+
+```{r}
+
+```
+
+## Ejemplo Dinámica de población con SpaDES
+
+```{r}
+
+``
+
