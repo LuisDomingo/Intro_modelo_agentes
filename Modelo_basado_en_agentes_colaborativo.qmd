@@ -1,6 +1,6 @@
 ---
 title: "Modelo Basado en Agentes"
-author: "Domingo Martínez, Cruz Carmen,  "
+author: "Domingo Martínez, Cruz Carmen, Gómez Almanza Johan Alexander,  "
 toc: true # Activar tabla de contenido
 toc-depth: 3 # Profundidad de la tabla de contenido
 toc-expand: true # Mostrar tabla al inicio
@@ -47,8 +47,15 @@ load_or_install(required_packages)
 
 ## Ejemplo COVID-19
 
-```{r Escenario usan v.s. no usan cubrebocas, include=T}
+En el scrip vamos a simular como actua el Covid-19 en el aula de la ENCiT
+Vamos a simular dos tipos de agentes, los que usan cubrebocas y los que no lo usan
+Se tiene 3 posibles estados: expusto, infectados y suseptibles.
 
+```{r Escenario usan v.s. no usan cubrebocas, include=T}
+nTime1=20 # Vamos a simular 20 díás de intereacción
+Infected <- data.frame(Day = 1:nTime1) # un data frame para contar infectados
+Susceptible <- data.frame(Day = 1:nTime1) # Un data frame para contar susceptibles
+Exposed <- data.frame(Day = 1:nTime1) # Un  data frame para contar expuestos
 ```
 
 ## Gráfico Dinámico COVID-19
