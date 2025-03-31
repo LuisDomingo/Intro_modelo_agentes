@@ -35,3 +35,4 @@ Un modelo basado en agentes, **es una tećnica computacional que permite simular
 - Realiza un gŕafico estático de esta segunda simulación.
 - ¿Qué pasa cuando tenemos más personas que no usan cubrebocas?
 - ¿Qué otras caraterísticas o parámetros te gustaría incluir en la simulación y cómo lo harías?
+- Adapta el modelo a un ejemplo en las ciencisa ambientales, que sea de tu interés. 
