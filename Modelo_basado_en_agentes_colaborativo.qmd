@@ -1,10 +1,10 @@
 ---
 title: "Modelo Basado en Agentes"
-author: "Domingo Martínez, Cruz Carmen, Gómez Almanza Johan Alexander, Pedroza Franco Jimena "
+author: "Domingo Martínez, Cruz Carmen, Gómez Almanza Johan Alexander, Pedroza Franco Jimena, Sánchez Rojano Norman Roberto "
 toc: true # Activar tabla de contenido
 toc-depth: 3 # Profundidad de la tabla de contenido
 toc-expand: true # Mostrar tabla al inicio
-toc-location: left-body # Ubicación de la tabla de contenido
+toc-location: left # Ubicación de la tabla de contenido
 number-sections: true # Numerar los encabezados en el render
 number-depth: 3 # Profundidad de encabezados que se numerarán
 toc-title: Contenido # Personalizar el título de la tabla de contenidos
@@ -49,7 +49,7 @@ load_or_install(required_packages)
 
 En el scrip vamos a simular como actua el Covid-19 en el aula de la ENCiT
 Vamos a simular dos tipos de agentes, los que usan cubrebocas y los que no lo usan
-Se tiene 3 posibles estados: expusto, infectados y suseptibles.
+Se tiene 3 posibles estados: expuesto, infectados y suseptibles.
 
 ```{r Escenario usan v.s. no usan cubrebocas, include=T}
 nTime1=20 # Vamos a simular 20 díás de intereacción
