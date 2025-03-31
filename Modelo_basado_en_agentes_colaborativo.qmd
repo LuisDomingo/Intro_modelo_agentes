@@ -1,6 +1,6 @@
 ---
 title: "Modelo Basado en Agentes"
-author: "Domingo Martínez, Cruz Carmen, Gómez Almanza Johan Alexander, Pedroza Franco Jimena, Sánchez Rojano Norman Roberto, Ortiz Pimentel Francisco Israel, Metztli Tamara Guerrero Rodriguez"
+author: "Domingo Martínez, Cruz Carmen, Gómez Almanza Johan Alexander, Pedroza Franco Jimena, Sánchez Rojano Norman Roberto, Ortiz Pimentel Francisco Israel, Metztli Tamara Guerrero Rodriguez, Tafoya Ledesma Dante Israel"
 toc: true # Activar tabla de contenido
 toc-depth: 3 # Profundidad de la tabla de contenido
 toc-expand: true # Mostrar tabla al inicio
@@ -29,7 +29,8 @@ format:
 # Lista de paquetes necesarios
 required_packages <- c("tidyverse",
                        "NetLogoR",
-                       "SpaDES.core")
+                       "SpaDES.core",
+                       "plotly")
 
 # Función para instalar y cargar paquetes automáticamente
 load_or_install <- function(packages) {
@@ -192,7 +193,42 @@ for (m in 1:20) {
 ## Gráfico Estático COVID-19
 
 ```{r}
+# Let's take a look
+library(plotly)
+fig1 <- plot_ly(final.results)%>%
+  
+  add_trace(type = 'scatter', mode = 'lines', x = ~Day, y = ~Exposed, hovertemplate = 'Exposed: %{y:}<extra></extra>', name = "Exposed",line = list(color = 'rgb(105,105,105)', width = 2, dash = 'dash'))%>%
+  
+  add_trace(type = 'scatter', mode = 'lines', x = ~Day, y = ~Infected, hovertemplate = 'Infected: %{y:}<extra></extra>', name = "Infected", line = list(color = 'rgb(105,105,105)', width = 2))%>%
+  
+  add_trace(type = 'scatter', mode = 'lines',x = ~Day, y = ~Susceptible, hovertemplate = 'Susceptible: %{y:}<extra></extra>', name = "Susceptible", line = list(color = 'rgb(128, 128, 128)', width = 2, dash = 'dot') )%>%
+  layout(showlegend = T)
+  
 
+fig1 <- fig1 %>%
+
+  layout(hovermode="x unified",
+
+         xaxis = list(zerolinecolor = '#ffff',
+
+                      zerolinewidth = 2,
+
+                      gridcolor = 'ffff', 
+                      
+                      title = "Day"),
+
+         yaxis = list(zerolinecolor = '#ffff',
+
+                      zerolinewidth = 2,
+
+                      gridcolor = 'ffff', 
+                      
+                      title = "Number of people"),
+         
+         title = 'COVID-19 propagation',
+
+         plot_bgcolor='#DCDCDC')
+fig1
 ```
 
 
