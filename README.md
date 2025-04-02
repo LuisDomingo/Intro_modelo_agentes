@@ -24,7 +24,8 @@ Un modelo basado en agentes, **es una tećnica computacional que permite simular
 
 ## Retos para participación (las personas que aún faltan)
 
-- Interpreta el gráfico dinámico
+- Interpreta el gráfico dinámico 
+El gráfico dinámico muestra la propagación del COVID-19 en un modelo basado en agentes, donde los individuos pasan por diferentes estados de la enfermedad a lo largo del tiempo. Se observan tres categorías: los susceptibles, que representan a las personas que aún no han sido infectadas; los expuestos, que han estado en contacto con el virus pero aún no son infecciosos; y los infectados, que ya han contraído la enfermedad y pueden contagiar a otros. En los primeros días, hay una disminución rápida en el número de susceptibles, mientras que los expuestos aumentan y luego comienzan a disminuir conforme se convierten en infectados. Posteriormente, la curva de infectados crece de manera acelerada y alcanza un punto en el que se estabiliza, indicando que la mayoría de la población ha sido afectada y que el contagio ha alcanzado su punto de equilibrio.
 - Interpreta el gráfico estático
 - Responde, ¿cuántas personas tenemos infectadas para el día 3.
 - ¿En cuánto tiempo se infectaron todas las personas?
