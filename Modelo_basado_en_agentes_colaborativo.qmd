@@ -1,6 +1,6 @@
 ---
 title: "Modelo Basado en Agentes"
-author: "Domingo Martínez, Cruz Carmen, Gómez Almanza Johan Alexander, Pedroza Franco Jimena, Sánchez Rojano Norman Roberto, Ortiz Pimentel Francisco Israel, Metztli Tamara Guerrero Rodriguez, Tafoya Ledesma Dante Israel, Arturo Pulido Balderas, Bardomiano Martínez Ana Cecilia"
+author: "Domingo Martínez, Cruz Carmen, Gómez Almanza Johan Alexander, Pedroza Franco Jimena, Sánchez Rojano Norman Roberto, Ortiz Pimentel Francisco Israel, Metztli Tamara Guerrero Rodriguez, Tafoya Ledesma Dante Israel, Arturo Pulido Balderas, Bardomiano Martínez Ana Cecilia, Ruiz Soto Valentina"
 toc: true # Activar tabla de contenido
 toc-depth: 3 # Profundidad de la tabla de contenido
 toc-expand: true # Mostrar tabla al inicio
@@ -48,7 +48,7 @@ load_or_install(required_packages)
 
 ## Ejemplo COVID-19
 
-En el scrip vamos a simular como actua el Covid-19 en el aula de la ENCiT
+En el script vamos a simular como actua el Covid-19 en el aula de la ENCiT
 Vamos a simular dos tipos de agentes, los que usan cubrebocas y los que no lo usan
 Se tiene 3 posibles estados: expuesto, infectados y suseptibles.
 
@@ -59,9 +59,7 @@ Susceptible <- data.frame(Day = 1:nTime1) # Un data frame para contar susceptibl
 Exposed <- data.frame(Day = 1:nTime1) # Un  data frame para contar expuestos
 ```
 
-## Gráfico Dinámico COVID-19
-
-```{r Dynamic Graph}
+```{r Simulación de contagios}
 # Declaramos un ciclo 
 
 for (m in 1:20) {
@@ -191,9 +189,23 @@ for (m in 1:20) {
 ```
 ## Interpretación 
 Tenemos a los dos agentes, los que usan y no usan cubrebocas, y a cada uno se le asigna un "estado" de susceptible "S", expuesto "E", e infectado "I". 
-En base a los resultados, se puede decir que los agentes empiezan siendo susceptibles, y a medida que avanzan los días (20), la dinámica cambia a expuestos o infectados, debido al contacto con personas que no usan cubrebocas, que a su vez, estos últimos son los que más probabilidad tienen de infectarse por no seguir las "normas" de usar cubrebocas. Con ello, podemos decir que los estados "S", "E", e "I", dependerán del contacto que tengan los agentes "S", con los "E" para que presenten un estado de infección, tomando en cuenta, el uso de cubrebocas en el espacio ENCiT. 
+10 agentes empiezan siendo susceptibles, y a medida que avanzan los días (20), su estado cambia a expuestos o infectados, debido al contacto con personas que no usan cubrebocas. Con ello, podemos decir que los estados "S", "E", e "I", dependerán del contacto que tengan los agentes "S", con los "I" para que presenten un estado de infección, tomando en cuenta, el uso de cubrebocas en el espacio ENCiT. 
 
-## Gráfico Estático COVID-19
+```{r}
+# De las 20 veces que se repitió el modelo (una por cada población de agentes generada), se calculan los promedios de infectados para cada día.
+
+Infected<-apply(Infected[,-1],1, mean)
+Susceptible<-apply(Susceptible[,-1],1, mean)
+Exposed<-apply(Exposed[,-1],1, mean)
+nTime1=20
+final.results <- data.frame(Day = 1:nTime1,
+                            Infected,
+                            Susceptible,
+                            Exposed)
+```
+
+
+## Gráfico Dinámico COVID-19
 
 ```{r}
 # Let's take a look
@@ -213,19 +225,13 @@ fig1 <- fig1 %>%
   layout(hovermode="x unified",
 
          xaxis = list(zerolinecolor = '#ffff',
-
                       zerolinewidth = 2,
-
                       gridcolor = 'ffff', 
-                      
                       title = "Day"),
-
+         
          yaxis = list(zerolinecolor = '#ffff',
-
                       zerolinewidth = 2,
-
                       gridcolor = 'ffff', 
-                      
                       title = "Number of people"),
          
          title = 'COVID-19 propagation',
@@ -235,11 +241,38 @@ fig1
 ```
 
 
+
 ## Ejemplo depredador-presa con NetLogoR
 
 ```{r}
+library(NetLogoR)
 
+# Crear un mundo de 50x50 celdas
+world <- createWorld(minPxcor = 0, maxPxcor = 50, minPycor = 0, maxPycor = 50)
+
+# Crear 50 conejos y 10 lobos
+conejos <- createTurtles(n = 50, world = world)
+lobos <- createTurtles(n = 10, world = world)
+
+# Simulación de movimiento aleatorio
+move_agents <- function(agents) {
+  agents <- fd(agents, dist = 1)  # Mover 1 unidad
+  agents <- right(agents, angle = runif(nrow(agents), -45, 45))  # Giro aleatorio
+  return(agents)
+}
+
+# Ejecutar 10 pasos de simulación
+for (i in 1:10) {
+  conejos <- move_agents(conejos)
+  lobos <- move_agents(lobos)
+}
 ```
+
+```{r}
+print(conejos)
+print(lobos)
+```
+
 
 ## Ejemplo Dinámica de población con SpaDES
 
