@@ -1,6 +1,6 @@
 ---
 title: "Modelo Basado en Agentes"
-author: "Domingo Martínez, Cruz Carmen, Gómez Almanza Johan Alexander, Pedroza Franco Jimena, Sánchez Rojano Norman Roberto, Ortiz Pimentel Francisco Israel, Metztli Tamara Guerrero Rodriguez, Tafoya Ledesma Dante Israel, Arturo Pulido Balderas"
+author: "Domingo Martínez, Cruz Carmen, Gómez Almanza Johan Alexander, Pedroza Franco Jimena, Sánchez Rojano Norman Roberto, Ortiz Pimentel Francisco Israel, Metztli Tamara Guerrero Rodriguez, Tafoya Ledesma Dante Israel, Arturo Pulido Balderas, Bardomiano Martínez Ana Cecilia"
 toc: true # Activar tabla de contenido
 toc-depth: 3 # Profundidad de la tabla de contenido
 toc-expand: true # Mostrar tabla al inicio
@@ -189,6 +189,9 @@ for (m in 1:20) {
   #################################################################
 }
 ```
+## Interpretación 
+Tenemos a los dos agentes, los que usan y no usan cubrebocas, y a cada uno se le asigna un "estado" de susceptible "S", expuesto "E", e infectado "I". 
+En base a los resultados, se puede decir que los agentes empiezan siendo susceptibles, y a medida que avanzan los días (20), la dinámica cambia a expuestos o infectados, debido al contacto con personas que no usan cubrebocas, que a su vez, estos últimos son los que más probabilidad tienen de infectarse por no seguir las "normas" de usar cubrebocas. Con ello, podemos decir que los estados "S", "E", e "I", dependerán del contacto que tengan los agentes "S", con los "E" para que presenten un estado de infección, tomando en cuenta, el uso de cubrebocas en el espacio ENCiT. 
 
 ## Gráfico Estático COVID-19
 
