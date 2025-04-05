@@ -35,5 +35,7 @@ El gráfico dinámico muestra la propagación del COVID-19 en un modelo basado e
 - Realiza un gráfico dinámico de esta segunda simulación.
 - Realiza un gŕafico estático de esta segunda simulación.
 - ¿Qué pasa cuando tenemos más personas que no usan cubrebocas?
-- ¿Qué otras caraterísticas o parámetros te gustaría incluir en la simulación y cómo lo harías?
+- ¿Qué otras características o parámetros te gustaría incluir en la simulación y cómo lo harías?
+El modelo considera que si uno de los agentes de un encuentro no sigue la norma y está infectado, el otro tendrá cierta probabilidad de infectarse independientemente de si usa o no cubrebocas, por lo que incluiría una probabilidad de infección diferente para los agentes susceptibles que siguen y no siguen la norma, esto mediante un ciclo if anidado en la última parte del ciclo general. Algo similar se podría hacer si se quiere incluir la vulnerabilidad como variable de los agentes, es decir si tienen alguna comorbilidad como asma o edad avanzada. Además, si se hace una modelación de más días, se podría incluir la recuperación de agentes infectados implementando tal vez un proceso de Markov, la lógica de este sería que, si un agente ha registrado el estado Infectado por 14 días (duración aproximada de la infección) entonces su estado cambia a susceptible.
+  
 - Adapta el modelo a un ejemplo en las ciencisa ambientales, que sea de tu interés. 
