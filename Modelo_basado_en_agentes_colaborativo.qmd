@@ -1,6 +1,6 @@
 ---
 title: "Modelo Basado en Agentes"
-author: "Domingo Martínez, Cruz Carmen, Gómez Almanza Johan Alexander, Pedroza Franco Jimena, Sánchez Rojano Norman Roberto, Ortiz Pimentel Francisco Israel, Metztli Tamara Guerrero Rodriguez, Tafoya Ledesma Dante Israel, Arturo Pulido Balderas, Bardomiano Martínez Ana Cecilia, Ruiz Soto Valentina"
+author: "Domingo Martínez, Cruz Carmen, Gómez Almanza Johan Alexander, Pedroza Franco Jimena, Sánchez Rojano Norman Roberto, Ortiz Pimentel Francisco Israel, Metztli Tamara Guerrero Rodriguez, Tafoya Ledesma Dante Israel, Arturo Pulido Balderas, Bardomiano Martínez Ana Cecilia, Ruiz Soto Valentina, Delgado Cancino Diego Enrique"
 toc: true # Activar tabla de contenido
 toc-depth: 3 # Profundidad de la tabla de contenido
 toc-expand: true # Mostrar tabla al inicio
